@@ -23,7 +23,7 @@
     </div>
   
     <!-- Posts List -->
-    <div *ngFor="let post of posts">
+    <div *ngFor="let post of posts ;  let i = index">
       <div class="card shadow-sm mb-4">
         <div class="card-body">
           <!-- Post Content -->
@@ -38,19 +38,19 @@
             </button>
   
             <!-- Comments Section -->
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column ">
               
               <textarea
               #commentText
-              
+              (input)="onTextChange(i)"
             class="form-control"
             placeholder="Add a comment..."
             rows="1"
           ></textarea>
               <button
-                class="btn btn-sm btn-primary rounded-pill"
+                class="btn btn-sm btn-primary rounded-pill mt-2"
                 (click)="addComment(post._id, commentText.value)"
-                
+                [disabled]="!commentText.value.trim()"
               >
                 Comment
               </button>

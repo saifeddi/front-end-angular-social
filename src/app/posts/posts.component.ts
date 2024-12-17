@@ -49,4 +49,8 @@ export class PostsComponent implements OnInit {
        }
     });
   }
+
+  onTextChange(index: number): void {
+    this.posts[index].isDisabled = this.posts[index].text.trim() === '';
+  }
 }
